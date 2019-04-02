@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Kalkulator</title>
+</head> 
+<body>
+    <h3>Kalkulator Normal Anti Idiot</h3>
+    <div class="app-container">
+        <div class="screen">
+            <input type="text" class="screen-input" name="screen1" id="screen1" disabled>
+        </div>
+        <div class="numpad-container">
+            <div class="min-top">
+                <div class="btn-group" id="btn-clear-delete">
+                    <button class="btn col-3 numb" onclick="_clear()">Clear</button>
+                    <button class="btn col-3 numb" onclick="_erase()"><<</button>
+                </div>
+                <div class="btn-group" id="render-btn-number"></div>
+                <div class="btn-group" id="btn-zero-comma">
+                    <button class="btn col-3 numb" onclick="StrConcat(0)">0</button>
+                    <button class="btn col-3 numb coma" onclick="StrConcat('.')">.</button>
+                </div>
+                <div class="btn-group" id="btn-operation">
+                    <button class="btn opr" onclick="StrConcat('/')">/</button>
+                    <button class="btn opr" onclick="StrConcat('*')">*</button>
+                    <button class="btn opr" onclick="StrConcat('-')">-</button>
+                    <button class="btn opr" onclick="StrConcat('+')">+</button>
+                    <button class="btn opr" onclick="_total()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+var Screen1 = document.getElementById('screen1');
+
+function StrScan_last(str) {
+    var returned = false;
+    var Screen1Val = Screen1.value;
+    for(var i = 0; i < Screen1Val.length; i++) {
+        var substr = Screen1Val.slice(Screen1Val.length-1, Screen1Val.length);
+
+        if(substr == str) returned = true;
+    }
+    return returned;
+}
+
+function StrConcat(str) {
+    
+    if(
+        (StrScan_last('*') && str == '/') || (StrScan_last('*') && str == '+') ||
+        (StrScan_last('/') && str == '*') || (StrScan_last('/') && str == '+') ||
+        (StrScan_last('+') && str == '/') || (StrScan_last('+') && str == '*') ||
+        (StrScan_last('-') && str == '+') || (StrScan_last('-') && str == '/') || (StrScan_last('-') && str == '*')
+        
+    ) 
+    {
+        _erase();
+    }
+
+    if(!( (str == '/' && StrScan_last('/') === true) || (str == '*' && StrScan_last('*') === true)||
+          (str == '-' && StrScan_last('-') === true) || (str == '+' && StrScan_last('+') === true)||
+          (str == '.' && StrScan_last('.') === true) ) ) 
+    {
+            Screen1.value += str;
+    }
+
+    
+
+}
+
+function _erase() {
+    var SliceLastStr = Screen1.value.slice(0, Screen1.value.length-1);
+    Screen1.value = SliceLastStr;
+}
+
+function _clear() {
+    Screen1.value = '';
+}
+
+function _total() {
+    if(Screen1.value != '   ')
+        Screen1.value = eval(Screen1.value);
+}
+
+var btnList = '';
+for(var row = 7; row >= 1; row -= 5) {
+    for(var col = 0; col <= 2; col++) {
+        if(col > 0) row++;
+        btnList += '<button class="btn col-2 numb" onclick="StrConcat('+ row +')">'+ row +'</button>\n'
+    }
+}
+
+document.getElementById('render-btn-number').innerHTML = btnList
+</script>
+
+</html>

@@ -1,0 +1,120 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+/* .btn-group {
+    display: block;
+} */
+
+.app-container {
+    width: 382px;
+    background-color: #fff;
+    box-shadow: 1px 4px 10px #0004;
+    height: 321px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.screen-input {
+    width: 382px;
+    /* height: 60px; */
+    padding: 44px 0 5px 0;
+    font-size: 1.9rem;
+    text-align: right;
+    color: #000;
+    background-color: #fff;
+    border: 0;
+    box-shadow: 0 0 5px #4442;
+    margin: 1px 0 10px 0;
+    border-radius: 4px;
+}
+
+.numpad-container {
+    box-shadow: 1px 0 6px #4442;
+    height: 226px;
+    border-radius: 4px;
+    /* padding: 2px; */
+}
+
+.min-top {
+    top: -4px;
+    position: relative;
+}
+
+.btn {
+    font-size: 1.2rem;
+    border: 1px solid black;
+    margin: 4px 0 0 0;  
+    padding: 9px 0 9px 0;
+    background-color: #eee9;
+    border-radius: 3px;
+    transition: ease-in 0.05s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+    transition: 0.1s;
+}
+
+.btn.numb {
+    background-color: #fff;
+    border: 1px solid #8af;
+}
+
+.btn.numb:hover {
+    background-color: #8af;
+    transition: ease-in-out 0.08s;
+}
+
+.btn.numb:active {
+    background-color: #fff;
+}
+
+.btn.coma {
+    font-size: 2rem;
+    padding: 0px 0 3px 0;
+    margin: 4px;
+    position: absolute;
+    /* padding: 0;
+    margin: 0;
+    top: 4px; */
+}
+
+#btn-operation {
+    /* float: right; */
+    /* top: -212px; */
+    /* left: -38px; */
+    top: -230px;
+    left: 312px;
+    position: relative;
+}
+
+.btn.opr {
+    width: 70px;
+    display: block;
+    background-color: #f90;
+    border: 1px solid #f90;
+}
+
+.btn.opr:hover {
+    background-color: #fff;
+    transition: ease-in-out 0.08s;
+}
+
+.btn.opr:active {
+    background-color: #f90;
+}
+
+.col-3 {
+    width: 152px;
+}
+
+.col-2 {
+    width: 100px;
+}
+
+/* .col-1 {
+    width: 46px;
+} */
